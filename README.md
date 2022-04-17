@@ -15,7 +15,7 @@ Discord Music Bot for JeonJu University
 ### reference
 
 > https://github.com/vendettadelsangue/typescript-discord-bot  
-For the base of the bot.
+  For the base of the bot.
 
 > https://github.com/vendettadelsangue/discordjsmusic  
-For the bot's music function.
+  For the bot's music function.
