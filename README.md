@@ -12,7 +12,7 @@ Discord Music Bot for JeonJu University
   
   
 ### Langage
-100% Typescript
+> 100% Typescript
   
   
 ### reference
