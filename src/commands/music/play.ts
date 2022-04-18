@@ -35,10 +35,8 @@ const command: Command = {
             guildId: message.guild!.id,
             adapterCreator: message.guild!.voiceAdapterCreator,
         });
-        let queue = client.music.queue;
         const nowplaying = client.music.nowplaying;
-        if (!queue) client.music.queue = [];
-        queue = client.music.queue;
+        if (!client.music.queue) client.music.queue = [];
         const item = {
             url: info.videoDetails.video_url,
             title: info.videoDetails.title,
@@ -47,12 +45,12 @@ const command: Command = {
             authorname: info.videoDetails.author.name,
             author: message.author
         }
-        queue.push(item)
-        if (nowplaying && queue.length >= 1) message.reply(`<@${message.author.id}>, 🎶 당신의 신청곡: **${item.title}** \`\`[${secToHHMSS(item.length)}]\`\` 이 대기열 ${queue.length} 에 위치되었습니다!`);
+        client.music.queue.push(item)
+        if (nowplaying && client.music.queue.length >= 1) message.reply(`<@${message.author.id}>, 🎶 당신의 신청곡: **${item.title}** \`\`[${secToHHMSS(item.length)}]\`\` 이 대기열 ${client.music.queue.length} 에 위치되었습니다!`);
         playItem();
         async function playItem() {
-            if (!nowplaying && queue[0]) {
-                var playitem = queue.shift();
+            if (!nowplaying && client.music?.queue[0]) {
+                var playitem = client.music.queue.shift();
                 client.music!.nowplaying = playitem;
                 client.music!.resource = createAudioResource(ytdl(playitem.url, {
                     highWaterMark: 1 << 25,
@@ -65,17 +63,17 @@ const command: Command = {
                 client.music!.connection.subscribe(client.music!.player);
                 client.music!.resource?.playStream.once("end", () => {
                     if (client.music!.re == 1) {
-                        queue.push(client.music!.nowplaying)
+                        client.music?.queue.push(client.music!.nowplaying)
                         client.music!.nowplaying = null;
                     } else if (client.music!.re == 2) {
-                        queue.unshift(playitem);
+                        client.music?.queue.unshift(playitem);
                         client.music!.nowplaying = null;
                     }
                     playItem();
                 });
                 client.music!.resource.volume?.setVolume(client.music!.volume / 100);
                 message.channel.send(`🎶 현재 재생중인 곡 : **${playitem.title}** \`\`[${secToHHMSS(playitem.length)}]\`\``);
-            } else if (queue.length === 0) {
+            } else if (client.music?.queue.length === 0) {
                 client.music!.nowplaying = null;
                 client.music!.connection.disconnect();
                 client.music!.connection = null
