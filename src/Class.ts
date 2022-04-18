@@ -28,11 +28,11 @@ constructor(options: ClientOptions) {
     super(options);
     this.music = null;
     this.commands = new Collection();
-    this.loadCommads();
+    this.loadCommands();
     this.loadEvents();
 };
 
-    private loadCommads(): void {
+    private loadCommands(): void {
     const commandFolders = readdirSync('./commands', { 'withFileTypes': true }).filter(i => i.isDirectory());
     commandFolders.forEach((f) => {
         let commandFiles = readdirSync('./commands/' + f.name).filter((file) => file.endsWith('.js') || file.endsWith('.ts'));

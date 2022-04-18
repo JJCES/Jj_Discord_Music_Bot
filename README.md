@@ -2,13 +2,13 @@
 Discord Music Bot for JeonJu University
   
   
-## What is jJ_Discord_Music_Bot?
+## What is Jj_Discord_Music_Bot?
   
   
-> jJ_Discord_Music_Bot is just a Discord music bot!  
+> Jj_Discord_Music_Bot is just a Discord music bot!  
 > The only special thing about this bot is that it was made for Jeonju National University students.  
 > If you guys want to use this bot  
-> Just edit Config.ts file.  
+> Create the ./src/Config.ts file and write the source like [Example](https://github.com/JJCES/Jj_Discord_Music_Bot/blob/main/src/Example.Config.ts) file
   
   
 ### Langage
