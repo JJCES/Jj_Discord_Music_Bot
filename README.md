@@ -11,7 +11,7 @@ Discord Music Bot for JeonJu University
 > Create the ./src/Config.ts file and write the source like [Example](https://github.com/JJCES/Jj_Discord_Music_Bot/blob/main/src/Example.Config.ts) file
   
   
-### Langage
+### Language
 > 100% Typescript
   
   
