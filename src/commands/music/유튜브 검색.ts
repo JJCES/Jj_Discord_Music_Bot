@@ -31,7 +31,7 @@ const command: Command = {
             videos = videos;
             collector.once('collect', function (m) {
                 infomsg.delete();
-                if (m.content.startsWith("$재생")) {
+                if (m.content.toLocaleLowerCase().startsWith("!play")) {
                     message.reply("검색을 취소합니다")
                     return
                 }
