@@ -15,7 +15,7 @@ const command: Command = {
             color: "BLURPLE",
             author: {
                 icon_url: item.author.displayAvatarURL(),
-                name: item.author.tag
+                name: item.author.user.tag
             },
             thumbnail: {
                 url: item.thumbnail

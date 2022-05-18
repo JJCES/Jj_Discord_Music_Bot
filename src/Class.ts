@@ -1,4 +1,4 @@
-import { Client, ClientOptions, Collection, Intents, User } from 'discord.js';
+import { Client, ClientOptions, Collection, GuildMember, Intents } from 'discord.js';
 import { Command, Event } from './interface/Types.js';
 import { AudioResource, AudioPlayer } from "@discordjs/voice";
 import { readdirSync } from 'fs';
@@ -11,15 +11,22 @@ export default class myClient extends Client {
         connection: any | null;
         player: AudioPlayer | null;
         resource: AudioResource | null;
-        queue: Array<any | { [key: string]: any }>;
+        queue: Array<{
+            url: string,
+            title: string,
+            length: string,
+            thumbnail: string,
+            authorname: string,
+            author: GuildMember;
+        }>;
         nowplaying: {
             url: string,
             title: string,
             length: string,
             thumbnail: string,
             authorname: string,
-            author: User;
-        } | null;
+            author: GuildMember;
+        } | undefined | null;
 re: 0 | 1 | 2;
 pause: boolean;
     } | null;

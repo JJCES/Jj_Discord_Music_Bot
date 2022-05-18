@@ -1,5 +1,6 @@
 import { MessageButton, MessageActionRow, MessageEmbed } from 'discord.js';
 import { Command } from '../../interface/Types';
+import secToHHMSS from '../../Modules/secToHHMMSS';
 
 const command: Command = {
     description: "신청받은 곡 리스트를 보여줍니다.",
@@ -7,10 +8,22 @@ const command: Command = {
     management: false,
     run: (client, message, args) => {
         if (!client.music?.nowplaying) return message.reply("재생중인 곡이 없습니다!");
+        let page = 0
+        let maxPage = Math.ceil(client.music.queue.length / 5);
         const embed = new MessageEmbed({
             title: "신청받은 곡 리스트",
-            color: "BLURPLE"
+            color: "BLURPLE",
+            description: `> 재생중 [${client.music.nowplaying.author.nickname ?? client.music.nowplaying.author.user.username}]\n${client.music.nowplaying.title}`,
+            footer: {
+                text: `페이지 : ${page + 1} | 마지막 페이지 : ${maxPage == 0 ? 1 : maxPage}`
+            }
         });
+
+        for (let i = 1; i < client.music.queue.length; i++) {
+            let item = client.music.queue[i];
+            embed.description += `\n> ${i} [${item.author.nickname ?? item.author.user.username}]\n${item.title}[${secToHHMSS(item.length)}]`
+        };
+
         const buttons = new MessageActionRow().addComponents(
             new MessageButton({
                 label: "◀️",
