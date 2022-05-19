@@ -46,7 +46,6 @@ constructor(options: ClientOptions) {
         if (commandFiles.length > 25) throw new Error("명령어 타입은 25개를 넘길 수 없습니다.");
         commandFiles.forEach((c) => {
             const command = require('./commands/' + f.name + '/' + c) as { default: Command };
-            command.default.name = c;
             command.default.type = f.name;
             this.commands.set(c.replace(".js", "").replace(".ts", ""), command.default);
         });

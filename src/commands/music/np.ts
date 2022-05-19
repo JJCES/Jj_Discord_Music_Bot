@@ -3,6 +3,7 @@ import { Command } from '../../interface/Types';
 import secToHHMSS from '../../Modules/secToHHMMSS';
 
 const command: Command = {
+    name: ["현재곡", "현곡", "nowPlaying", "np"],
     description: "현재 재생중인 곡의 정보를 보여줍니다.",
     dm: false,
     management: false,

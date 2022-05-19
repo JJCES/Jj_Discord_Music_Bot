@@ -3,6 +3,7 @@ import search from "yt-search";
 import { Message } from 'discord.js';
 
 const command: Command = {
+    name : ["유튜브 검색", "youtube-search"],
     description: "봇의 핑을 확인합니다.",
     dm: false,
     management: false,

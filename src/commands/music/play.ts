@@ -4,6 +4,7 @@ import { joinVoiceChannel, createAudioPlayer, createAudioResource } from '@disco
 import secToHHMSS from '../../Modules/secToHHMMSS';
 
 const command: Command = {
+    name : ["재생", "play"],
     description: "음악을 재생합니다.",
     dm: false,
     usage:"{노래의 제목 | Youtube_URL}",

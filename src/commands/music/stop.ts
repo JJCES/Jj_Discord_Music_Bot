@@ -1,6 +1,7 @@
 import { Command } from '../../interface/Types';
 
 const command: Command = {
+    name : ["종료", "끄기", "stop"],
     description: "재생중인 곡을 멈추고 봇을 종료합니다.",
     dm: false,
     management: false,

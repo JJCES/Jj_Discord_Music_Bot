@@ -1,6 +1,7 @@
 import { Command } from '../../interface/Types';
 
 const command: Command = {
+    name: ["볼륨", "소리", "volume"],
     description: "음악의 볼륨을 수정합니다.\n기본 볼륨 : 50",
     usage: "{0~150}",
     dm: false,

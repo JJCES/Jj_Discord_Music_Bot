@@ -3,6 +3,7 @@ import { MessageEmbed } from 'discord.js';
 import config from '../../Config';
 
 const command: Command = {
+    name: ["도움말", "도움", "help"],
     description: "봇의 명령어들에 대해 설명해줍니다.",
     usage: "명령어",
     dm: true,
@@ -20,7 +21,7 @@ const command: Command = {
                 });
 
                 client.commands.forEach(t => {
-                    if (t.name != "유튜브 검색.js") {
+                    if (!t.name?.includes("유튜브 검색.js")) {
                         let type = '';
                         switch (t.type) {
                             case undefined:
@@ -33,9 +34,9 @@ const command: Command = {
                         };
                         let field = embed.fields.find(i => i.name == type);
                         if (field) {
-                            field.value += ', ' + t.name?.replace('.ts', '').replace('.js', '');
+                            field.value += ', ' + t.name[0];
                         } else {
-                            embed.fields.push({ name: type, value: t.name!.replace('.ts', '').replace('.js', ''), inline: false });
+                            embed.fields.push({ name: type, value: t.name[0], inline: false });
                         };
                     };
                 });
@@ -46,13 +47,17 @@ const command: Command = {
                 let command = client.commands.get(args[0]);
                 if (!command) return message.reply("없는 명령어입니다.");
                 embed = new MessageEmbed({
-                    title: command.name,
+                    title: command.name[0],
                     description: command.description,
                     color: "BLURPLE",
                     fields: [
                         {
                             name: "사용법",
-                            value: config.prefix + command.name?.replace('.js', '').replace('.ts', '') + ' ' + (command.usage ?? "")
+                            value: config.prefix + command.name[0] + ' ' + (command.usage ?? "")
+                        },
+                        {
+                            name: "명령어 리스트",
+                            value: command.name.join(", ")
                         },
                         {
                             name: "명령어 타입",

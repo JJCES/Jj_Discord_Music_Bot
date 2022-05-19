@@ -3,6 +3,7 @@ import { Command } from '../../interface/Types';
 import secToHHMSS from '../../Modules/secToHHMMSS';
 
 const command: Command = {
+    name : ["리스트", "대기열", "queue"],
     description: "신청받은 곡 리스트를 보여줍니다.",
     dm: false,
     management: false,

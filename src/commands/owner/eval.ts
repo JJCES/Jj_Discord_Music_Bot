@@ -2,6 +2,7 @@ import { MessageEmbed } from 'discord.js';
 import { Command } from '../../interface/Types';
 
 const command: Command = {
+    name: ["eval"],
     description: "봇 관리자가 명령어를 테스트할때 사용됩니다.",
     usage: "코드",
     dm: true,

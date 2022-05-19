@@ -11,7 +11,7 @@ const event: Event = {
         let args = message.content.slice(config.prefix.length).trim().split(" ");
         let command = args.shift()!.toLocaleLowerCase();
         try {
-            let file = client.commands.get(command)!;
+            let file = client.commands.find(i => i.name?.includes(command) == true)!;
             if (message.channel.type === "DM" && !file.dm || file.type === "owner" && message.author.id !== config.owner || message.member?.permissions.has("ADMINISTRATOR") && file.management) return;
             //return message.reply("명령어 사용법이 잘못되었습니다.\n" + config.prefix + 'help ' + command + " 를 통해 명령어 사용법에 대해 확인해보세요.");r
             file.run(client, message, args);

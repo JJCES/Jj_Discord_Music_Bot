@@ -3,7 +3,7 @@ import Client from '../Class';
 import { APIApplicationCommandOption } from 'discord-api-types/v9';
 
 export interface Command {
-    name?: string;
+    name: string[];
     description: string;
     usage?: string;
     dm: boolean;
